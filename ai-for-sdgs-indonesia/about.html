@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tentang inisiatif open-source AI for SDGs Indonesia — mengapa kami membuat ini dan bagaimana Anda bisa berkontribusi.">
+  <title>Tentang Proyek — AI for SDGs Indonesia</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" role="navigation" aria-label="Navigasi utama">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="AI for SDGs Indonesia — Beranda">AI for <span>SDGs</span></a>
+    <div class="nav__links" role="list">
+      <a href="index.html" class="nav__link" role="listitem">Beranda</a>
+      <a href="dashboard.html" class="nav__link" role="listitem">Dashboard</a>
+      <a href="news.html" class="nav__link" role="listitem">Berita</a>
+      <a href="about.html" class="nav__link active" role="listitem">Tentang</a>
+    </div>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" data-search-open aria-label="Buka pencarian">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav__icon-btn" id="theme-toggle" aria-label="Aktifkan mode gelap">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="nav__hamburger" aria-label="Buka menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menu navigasi" aria-modal="true">
+  <button class="mobile-menu__close" aria-label="Tutup menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <nav class="mobile-menu__links">
+    <a href="index.html" class="mobile-menu__link">Beranda</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <a href="news.html" class="mobile-menu__link">Berita</a>
+    <a href="about.html" class="mobile-menu__link">Tentang</a>
+  </nav>
+</div>
+
+<!-- SEARCH MODAL -->
+<div class="search-modal" role="dialog" aria-label="Pencarian" aria-modal="true">
+  <button class="search-modal__close" aria-label="Tutup pencarian">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="search-modal__input-wrap">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;color:var(--color-text-muted)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" class="search-modal__input" placeholder="Cari topik, pilar, atau halaman..." aria-label="Cari konten">
+  </div>
+  <div class="search-modal__results" role="list" aria-live="polite"></div>
+</div>
+
+<!-- ABOUT HEADER -->
+<header class="about-header page-wrapper" role="banner">
+  <div class="container">
+    <p class="eyebrow" style="margin-bottom:1rem">TENTANG PROYEK</p>
+    <h1 style="font-size:clamp(2rem,4vw,3.5rem);max-width:18ch">Mengapa Website Ini Ada</h1>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
+  <div class="about-letter">
+
+    <!-- Letter from the editor -->
+    <section aria-labelledby="letter-title">
+      <h2 id="letter-title" style="font-size:1.125rem;font-weight:500;font-family:'Inter',sans-serif;color:var(--color-text-muted);margin-bottom:2rem;letter-spacing:0.05em;text-transform:uppercase;font-size:0.75rem">Catatan dari Tim Redaksi</h2>
+
+      <p class="drop-cap">
+        Inisiatif ini lahir dari kegelisahan sederhana: dalam diskursus publik Indonesia tentang AI, dua narasi dominan adalah ketakutan ("AI akan mengganti pekerjaan kita") dan utopianisme ("AI akan menyelesaikan semua masalah"). Padahal di antara dua kutub itu, ada ruang luas yang lebih menarik dan lebih relevan: bagaimana AI, sebagai alat, sedang digunakan secara konkret untuk menyelesaikan masalah nyata di Indonesia hari ini.
+      </p>
+      <p>
+        Website ini adalah upaya kecil untuk memetakan ruang itu. Dengan fokus pada 17 Sustainable Development Goals, kami mendokumentasikan inisiatif AI yang sedang berjalan — dari startup di Bandung sampai laboratorium riset di Yogyakarta, dari Kementerian sampai NGO lapangan.
+      </p>
+      <p>
+        Kami menyebut ini "inisiatif open-source" karena: (1) semua kode website ini terbuka di GitHub, (2) data yang kami gunakan dapat diunduh dan diverifikasi, (3) kami menerima kontribusi dari siapa pun yang ingin menambah studi kasus, mengoreksi data, atau menyempurnakan analisis.
+      </p>
+      <p>
+        Indonesia akan mencapai SDGs — atau tidak — pada 2030. AI tidak akan menjadi penentu tunggal. Tapi kalau dipakai dengan bijak, AI bisa mempercepat pencapaian yang sudah berjalan, dan menerangi area yang selama ini tertinggal.
+      </p>
+
+      <blockquote class="pull-quote">
+        "Data yang baik adalah fondasi kebijakan yang baik. Kami percaya bahwa mendokumentasikan dan membuka data adalah bentuk advokasi paling tahan lama."
+      </blockquote>
+    </section>
+
+    <hr class="separator" style="margin:3rem 0">
+
+    <!-- Prinsip editorial -->
+    <section aria-labelledby="principles-title">
+      <h2 id="principles-title">Prinsip Editorial</h2>
+      <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:1.5rem">
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.8125rem;color:var(--color-text-muted);padding-top:0.2rem">01</span>
+          <div>
+            <h3 style="font-size:1.0625rem;margin-bottom:0.5rem">Berbasis data, bukan narasi</h3>
+            <p style="font-size:0.9375rem;color:var(--color-text-muted)">Setiap klaim didukung dengan sumber yang dapat diverifikasi. Kami membedakan dengan tegas antara data empiris dan proyeksi atau estimasi.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.8125rem;color:var(--color-text-muted);padding-top:0.2rem">02</span>
+          <div>
+            <h3 style="font-size:1.0625rem;margin-bottom:0.5rem">Kritis, bukan selebrasi</h3>
+            <p style="font-size:0.9375rem;color:var(--color-text-muted)">Setiap studi kasus menyertakan tantangan dan kritik. AI bukan solusi ajaib — dan kami tidak menulis seperti itu.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.8125rem;color:var(--color-text-muted);padding-top:0.2rem">03</span>
+          <div>
+            <h3 style="font-size:1.0625rem;margin-bottom:0.5rem">Terbuka dan dapat diaudit</h3>
+            <p style="font-size:0.9375rem;color:var(--color-text-muted)">Semua data tersedia untuk diunduh. Kode sumber website terbuka. Kami menyambut koreksi dan pembaruan dari komunitas.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.8125rem;color:var(--color-text-muted);padding-top:0.2rem">04</span>
+          <div>
+            <h3 style="font-size:1.0625rem;margin-bottom:0.5rem">Berpihak pada yang terpinggirkan</h3>
+            <p style="font-size:0.9375rem;color:var(--color-text-muted)">Kami secara aktif mencari studi kasus dari daerah 3T, komunitas adat, dan kelompok yang historis tidak terwakili dalam narasi teknologi Indonesia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="separator" style="margin:3rem 0">
+
+    <!-- Cara berkontribusi -->
+    <section aria-labelledby="contribute-title">
+      <h2 id="contribute-title">Cara Berkontribusi</h2>
+      <p style="margin-top:1rem;margin-bottom:2rem;color:var(--color-text-muted)">
+        Proyek ini terbuka untuk kontribusi dalam bentuk apapun — dari koreksi data, penambahan studi kasus, hingga perbaikan desain atau kode.
+      </p>
+
+      <pre><code># Clone repository
+git clone https://github.com/[username]/ai-for-sdgs-indonesia.git
+
+# Masuk ke direktori
+cd ai-for-sdgs-indonesia
+
+# Buka di browser
+open index.html
+
+# Untuk kontribusi:
+# 1. Fork repository
+# 2. Buat branch baru
+git checkout -b fitur-baru
+
+# 3. Commit perubahan
+git commit -m "Tambah studi kasus X"
+
+# 4. Push ke fork Anda
+git push origin fitur-baru
+
+# 5. Buka Pull Request di GitHub</code></pre>
+
+      <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem">
+        <h3 style="font-size:1.125rem">Jenis kontribusi yang kami sambut:</h3>
+        <ul style="list-style:disc;padding-left:1.5rem;display:flex;flex-direction:column;gap:0.5rem;color:var(--color-text-muted);font-size:0.9375rem">
+          <li>Studi kasus baru: proyek AI for SDGs yang belum terdokumentasi</li>
+          <li>Koreksi data: jika ada angka yang tidak akurat atau sudah usang</li>
+          <li>Terjemahan: kami berencana menyediakan versi bahasa Inggris</li>
+          <li>Aksesibilitas: peningkatan WCAG untuk pengguna dengan disabilitas</li>
+          <li>Visualisasi data: chart atau peta baru yang memperkaya analisis</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="separator" style="margin:3rem 0">
+
+    <!-- Acknowledgments -->
+    <section aria-labelledby="ack-title">
+      <h2 id="ack-title">Pengakuan Sumber</h2>
+      <p style="margin-top:1rem;margin-bottom:1.5rem;color:var(--color-text-muted)">
+        Konten di website ini disusun berdasarkan data dan laporan dari institusi-institusi berikut:
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+        <div style="padding:1rem;border:var(--border);border-radius:var(--radius-md)">
+          <p style="font-weight:500;margin-bottom:0.25rem">Bappenas</p>
+          <p style="font-size:0.875rem;color:var(--color-text-muted)">Laporan VNR SDGs Indonesia 2024</p>
+        </div>
+        <div style="padding:1rem;border:var(--border);border-radius:var(--radius-md)">
+          <p style="font-weight:500;margin-bottom:0.25rem">BPS</p>
+          <p style="font-size:0.875rem;color:var(--color-text-muted)">Data Kependudukan & Kemiskinan 2024</p>
+        </div>
+        <div style="padding:1rem;border:var(--border);border-radius:var(--radius-md)">
+          <p style="font-weight:500;margin-bottom:0.25rem">BRIN</p>
+          <p style="font-size:0.875rem;color:var(--color-text-muted)">Laporan riset dan publikasi teknis</p>
+        </div>
+        <div style="padding:1rem;border:var(--border);border-radius:var(--radius-md)">
+          <p style="font-weight:500;margin-bottom:0.25rem">OJK</p>
+          <p style="font-size:0.875rem;color:var(--color-text-muted)">Statistik Perbankan & Inklusi Keuangan</p>
+        </div>
+        <div style="padding:1rem;border:var(--border);border-radius:var(--radius-md)">
+          <p style="font-weight:500;margin-bottom:0.25rem">KLHK</p>
+          <p style="font-size:0.875rem;color:var(--color-text-muted)">Data tutupan hutan dan deforestasi</p>
+        </div>
+        <div style="padding:1rem;border:var(--border);border-radius:var(--radius-md)">
+          <p style="font-weight:500;margin-bottom:0.25rem">Kemensos</p>
+          <p style="font-size:0.875rem;color:var(--color-text-muted)">Data DTKS dan program perlindungan sosial</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="separator" style="margin:3rem 0">
+
+    <!-- Lisensi -->
+    <section aria-labelledby="license-title">
+      <h2 id="license-title">Lisensi</h2>
+      <p style="margin-top:1rem;color:var(--color-text-muted)">
+        Kode sumber website ini dirilis di bawah <strong>lisensi MIT</strong> — Anda bebas menggunakan, memodifikasi, dan mendistribusikan ulang dengan mencantumkan atribusi. Konten editorial (teks, analisis) dirilis di bawah <strong>Creative Commons BY 4.0</strong>.
+      </p>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="https://github.com" class="btn btn--secondary" target="_blank" rel="noopener noreferrer" aria-label="Lihat kode sumber di GitHub (tautan eksternal)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          Lihat di GitHub
+        </a>
+        <a href="LICENSE" class="btn btn--ghost" aria-label="Baca lisensi MIT">Baca Lisensi MIT</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">AI for SDGs Indonesia</span>
+      <p class="footer__tagline">Mendokumentasikan peran kecerdasan buatan dalam mempercepat pencapaian 17 SDGs di Indonesia.</p>
+    </div>
+    <div>
+      <p class="footer__section-title">Pilar</p>
+      <nav class="footer__links" aria-label="Navigasi pilar">
+        <a href="pillars/social-aid.html" class="footer__link">AI & Bantuan Sosial</a>
+        <a href="pillars/inclusive-economy.html" class="footer__link">AI & Ekonomi Inklusif</a>
+        <a href="pillars/climate.html" class="footer__link">AI & Iklim</a>
+        <a href="pillars/education.html" class="footer__link">AI & Pendidikan</a>
+        <a href="pillars/agriculture.html" class="footer__link">AI & Pertanian</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__section-title">Navigasi</p>
+      <nav class="footer__links" aria-label="Navigasi utama footer">
+        <a href="dashboard.html" class="footer__link">Dashboard Data</a>
+        <a href="news.html" class="footer__link">Berita & Wawasan</a>
+        <a href="about.html" class="footer__link">Tentang Proyek</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copyright">© 2026 AI for SDGs Indonesia. Dirilis di bawah lisensi MIT.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "sdgProgress": [
+    {"goal": 1, "name": "Tanpa Kemiskinan", "progress": 68, "trend": "+3"},
+    {"goal": 2, "name": "Tanpa Kelaparan", "progress": 62, "trend": "+2"},
+    {"goal": 3, "name": "Kehidupan Sehat", "progress": 71, "trend": "+4"},
+    {"goal": 4, "name": "Pendidikan Berkualitas", "progress": 65, "trend": "+1"},
+    {"goal": 5, "name": "Kesetaraan Gender", "progress": 58, "trend": "+2"},
+    {"goal": 6, "name": "Air Bersih & Sanitasi", "progress": 73, "trend": "+5"},
+    {"goal": 7, "name": "Energi Bersih", "progress": 60, "trend": "+3"},
+    {"goal": 8, "name": "Pekerjaan Layak", "progress": 67, "trend": "+2"},
+    {"goal": 9, "name": "Industri & Inovasi", "progress": 55, "trend": "+4"},
+    {"goal": 10, "name": "Berkurangnya Ketimpangan", "progress": 49, "trend": "+1"},
+    {"goal": 11, "name": "Kota Berkelanjutan", "progress": 63, "trend": "+3"},
+    {"goal": 12, "name": "Konsumsi Bertanggung Jawab", "progress": 51, "trend": "+2"},
+    {"goal": 13, "name": "Penanganan Iklim", "progress": 47, "trend": "+1"},
+    {"goal": 14, "name": "Ekosistem Laut", "progress": 54, "trend": "+2"},
+    {"goal": 15, "name": "Ekosistem Daratan", "progress": 52, "trend": "+1"},
+    {"goal": 16, "name": "Perdamaian & Keadilan", "progress": 66, "trend": "+3"},
+    {"goal": 17, "name": "Kemitraan", "progress": 70, "trend": "+4"}
+  ],
+  "aiInvestment": [
+    {"year": 2015, "amount": 12},
+    {"year": 2016, "amount": 18},
+    {"year": 2017, "amount": 27},
+    {"year": 2018, "amount": 41},
+    {"year": 2019, "amount": 65},
+    {"year": 2020, "amount": 89},
+    {"year": 2021, "amount": 134},
+    {"year": 2022, "amount": 198},
+    {"year": 2023, "amount": 267},
+    {"year": 2024, "amount": 352},
+    {"year": 2025, "amount": 418},
+    {"year": 2026, "amount": 487}
+  ],
+  "pillarDistribution": [
+    {"pillar": "Bantuan Sosial", "count": 34, "key": "social-aid"},
+    {"pillar": "Ekonomi Inklusif", "count": 48, "key": "economy"},
+    {"pillar": "Climate Monitoring", "count": 27, "key": "climate"},
+    {"pillar": "Pendidikan", "count": 41, "key": "education"},
+    {"pillar": "Smart Agriculture", "count": 32, "key": "agriculture"}
+  ],
+  "keyStats": {
+    "totalProjects": 182,
+    "totalInvestmentUSD": 487,
+    "provinciesCovered": 34,
+    "sdgsImpacted": 15
+  }
+}

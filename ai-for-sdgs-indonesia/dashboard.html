@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard data progres 17 SDGs Indonesia dan peta inisiatif AI yang mempercepat pencapaiannya.">
+  <title>Dashboard Data — AI for SDGs Indonesia</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" role="navigation" aria-label="Navigasi utama">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="AI for SDGs Indonesia — Beranda">AI for <span>SDGs</span></a>
+    <div class="nav__links" role="list">
+      <a href="index.html" class="nav__link" role="listitem">Beranda</a>
+      <a href="dashboard.html" class="nav__link active" role="listitem">Dashboard</a>
+      <a href="news.html" class="nav__link" role="listitem">Berita</a>
+      <a href="about.html" class="nav__link" role="listitem">Tentang</a>
+    </div>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" data-search-open aria-label="Buka pencarian">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav__icon-btn" id="theme-toggle" aria-label="Aktifkan mode gelap">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="nav__hamburger" aria-label="Buka menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menu navigasi" aria-modal="true">
+  <button class="mobile-menu__close" aria-label="Tutup menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <nav class="mobile-menu__links">
+    <a href="index.html" class="mobile-menu__link">Beranda</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <a href="news.html" class="mobile-menu__link">Berita</a>
+    <a href="about.html" class="mobile-menu__link">Tentang</a>
+  </nav>
+</div>
+
+<!-- SEARCH MODAL -->
+<div class="search-modal" role="dialog" aria-label="Pencarian" aria-modal="true">
+  <button class="search-modal__close" aria-label="Tutup pencarian">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="search-modal__input-wrap">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;color:var(--color-text-muted)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" class="search-modal__input" placeholder="Cari topik, pilar, atau halaman..." aria-label="Cari konten">
+  </div>
+  <div class="search-modal__results" role="list" aria-live="polite"></div>
+</div>
+
+<!-- DASHBOARD HEADER -->
+<header class="dashboard-header page-wrapper" role="banner">
+  <div class="container">
+    <p class="eyebrow" style="margin-bottom:1rem">DATA DASHBOARD</p>
+    <h1 style="font-size:clamp(2rem,4vw,3.5rem);margin-bottom:0.75rem">The State of SDGs in Indonesia, 2026</h1>
+    <p style="font-size:1.0625rem;color:var(--color-text-muted);max-width:55ch;line-height:1.7">
+      Lacak progres 17 Sustainable Development Goals Indonesia dan peta inisiatif AI yang mempercepat pencapaiannya.
+    </p>
+    <p class="caption" style="margin-top:0.75rem">Data terakhir diperbarui: Mei 2026 · Sumber: Bappenas, BPS, KLHK, OJK</p>
+
+    <!-- Quick stats -->
+    <div class="dashboard-stats" role="list" aria-label="Statistik ringkas" style="margin-top:2rem">
+      <div class="dashboard-stat" role="listitem">
+        <div class="dashboard-stat__value" data-counter data-target="182">182</div>
+        <div class="dashboard-stat__label">Total Proyek AI Terdokumentasi</div>
+      </div>
+      <div class="dashboard-stat" role="listitem">
+        <div class="dashboard-stat__value" data-counter data-target="487">487</div>
+        <div class="dashboard-stat__label">Investasi US$ juta (2026)</div>
+      </div>
+      <div class="dashboard-stat" role="listitem">
+        <div class="dashboard-stat__value" data-counter data-target="34">34</div>
+        <div class="dashboard-stat__label">Provinsi Tercakup</div>
+      </div>
+      <div class="dashboard-stat" role="listitem">
+        <div class="dashboard-stat__value" data-counter data-target="15">15</div>
+        <div class="dashboard-stat__label">SDGs Berdampak</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- DASHBOARD CONTENT -->
+<main class="dashboard-content" id="main-content">
+  <div class="container">
+
+    <!-- FILTER PANEL -->
+    <div class="filter-panel" role="search" aria-label="Filter proyek">
+      <span class="filter-panel__label">Filter:</span>
+      <select class="filter-select" id="filter-sdg" aria-label="Filter berdasarkan SDG">
+        <option value="all">Semua SDGs</option>
+        <option value="1">SDG 1 — Tanpa Kemiskinan</option>
+        <option value="2">SDG 2 — Tanpa Kelaparan</option>
+        <option value="3">SDG 3 — Kehidupan Sehat</option>
+        <option value="4">SDG 4 — Pendidikan Berkualitas</option>
+        <option value="8">SDG 8 — Pekerjaan Layak</option>
+        <option value="9">SDG 9 — Industri & Inovasi</option>
+        <option value="10">SDG 10 — Berkurangnya Ketimpangan</option>
+        <option value="13">SDG 13 — Penanganan Iklim</option>
+        <option value="14">SDG 14 — Ekosistem Laut</option>
+        <option value="15">SDG 15 — Ekosistem Daratan</option>
+      </select>
+      <select class="filter-select" id="filter-pillar" aria-label="Filter berdasarkan pilar">
+        <option value="all">Semua Pilar</option>
+        <option value="social-aid">Bantuan Sosial</option>
+        <option value="economy">Ekonomi Inklusif</option>
+        <option value="climate">Climate Monitoring</option>
+        <option value="education">Pendidikan</option>
+        <option value="agriculture">Smart Agriculture</option>
+      </select>
+      <span class="filter-panel__label" style="margin-left:auto">
+        <span id="project-count" style="font-family:'JetBrains Mono',monospace;color:var(--color-accent);font-weight:500">28</span> proyek ditampilkan
+      </span>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-container" style="margin-top:2rem" role="region" aria-label="Peta proyek AI di Indonesia">
+      <div class="chart-container__header map-container__header">
+        <h2 class="chart-container__title">Peta Inisiatif AI for SDGs</h2>
+        <p class="chart-container__subtitle">Klik marker untuk melihat detail proyek. Scroll pada peta untuk zoom.</p>
+      </div>
+      <div id="map" aria-label="Peta interaktif proyek AI di seluruh Indonesia"></div>
+      <div style="padding:1rem 2rem;border-top:var(--border);display:flex;gap:1.5rem;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--color-text-muted)">
+          <span style="width:10px;height:10px;background:#1E3A8A;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.2)"></span> Bantuan Sosial
+        </span>
+        <span style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--color-text-muted)">
+          <span style="width:10px;height:10px;background:#0F766E;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.2)"></span> Ekonomi Inklusif
+        </span>
+        <span style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--color-text-muted)">
+          <span style="width:10px;height:10px;background:#166534;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.2)"></span> Climate Monitoring
+        </span>
+        <span style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--color-text-muted)">
+          <span style="width:10px;height:10px;background:#7C3AED;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.2)"></span> Pendidikan
+        </span>
+        <span style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--color-text-muted)">
+          <span style="width:10px;height:10px;background:#B45309;border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.2)"></span> Smart Agriculture
+        </span>
+      </div>
+    </div>
+
+    <!-- CHARTS ROW -->
+    <div class="dashboard-grid" style="margin-top:2rem">
+
+      <!-- SDG Progress Bar -->
+      <div class="chart-container dashboard-grid--full" role="region" aria-label="Grafik progres 17 SDGs">
+        <div class="chart-container__header">
+          <h2 class="chart-container__title">Progres 17 SDGs Indonesia</h2>
+          <p class="chart-container__subtitle">Skor 0–100 berdasarkan indikator Bappenas 2024. Merah (&lt;50): di belakang target. Kuning (50–64): on track. Biru (65+): melampaui target.</p>
+        </div>
+        <div style="position:relative;height:540px">
+          <canvas id="chart-sdg-progress" aria-label="Grafik batang horizontal progres 17 SDGs Indonesia"></canvas>
+        </div>
+      </div>
+
+      <!-- Investment Line Chart -->
+      <div class="chart-container" role="region" aria-label="Grafik investasi AI">
+        <div class="chart-container__header">
+          <h2 class="chart-container__title">Investasi AI for SDGs</h2>
+          <p class="chart-container__subtitle">Dalam US$ juta, kumulatif 2015–2026</p>
+        </div>
+        <div style="position:relative;height:260px">
+          <canvas id="chart-investment" aria-label="Grafik garis investasi AI Indonesia 2015 sampai 2026"></canvas>
+        </div>
+      </div>
+
+      <!-- Donut Chart -->
+      <div class="chart-container" role="region" aria-label="Distribusi proyek per pilar">
+        <div class="chart-container__header">
+          <h2 class="chart-container__title">Distribusi per Pilar</h2>
+          <p class="chart-container__subtitle">Jumlah proyek AI terdokumentasi</p>
+        </div>
+        <div style="position:relative;height:260px">
+          <canvas id="chart-pillar" aria-label="Grafik donut distribusi proyek AI per pilar"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Data note -->
+    <p class="caption" style="margin-top:1rem;padding-top:1.5rem;border-top:var(--border)">
+      Catatan metodologi: Data progres SDG bersumber dari laporan Bappenas 2024. Data investasi merupakan estimasi berdasarkan laporan publik, laporan tahunan perusahaan, dan siaran pers pemerintah. Data bersifat indikatif — bukan angka resmi. Untuk penggunaan akademik atau kebijakan, verifikasi melalui sumber primer.
+    </p>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">AI for SDGs Indonesia</span>
+      <p class="footer__tagline">Mendokumentasikan peran kecerdasan buatan dalam mempercepat pencapaian 17 SDGs di Indonesia.</p>
+    </div>
+    <div>
+      <p class="footer__section-title">Pilar</p>
+      <nav class="footer__links" aria-label="Navigasi pilar">
+        <a href="pillars/social-aid.html" class="footer__link">AI & Bantuan Sosial</a>
+        <a href="pillars/inclusive-economy.html" class="footer__link">AI & Ekonomi Inklusif</a>
+        <a href="pillars/climate.html" class="footer__link">AI & Iklim</a>
+        <a href="pillars/education.html" class="footer__link">AI & Pendidikan</a>
+        <a href="pillars/agriculture.html" class="footer__link">AI & Pertanian</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__section-title">Navigasi</p>
+      <nav class="footer__links" aria-label="Navigasi utama footer">
+        <a href="dashboard.html" class="footer__link">Dashboard Data</a>
+        <a href="news.html" class="footer__link">Berita & Wawasan</a>
+        <a href="about.html" class="footer__link">Tentang Proyek</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copyright">© 2026 AI for SDGs Indonesia. Dirilis di bawah lisensi MIT.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/main.js"></script>
+<script src="js/counter.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/map.js"></script>
+</body>
+</html>

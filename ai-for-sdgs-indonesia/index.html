@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eksplorasi data-driven tentang peran AI dalam mempercepat pencapaian 17 Sustainable Development Goals di Indonesia.">
+  <title>AI for SDGs Indonesia — Kecerdasan Buatan untuk Masa Depan Indonesia</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" role="navigation" aria-label="Navigasi utama">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="AI for SDGs Indonesia — Beranda">
+      AI for <span>SDGs</span>
+    </a>
+    <div class="nav__links" role="list">
+      <a href="index.html" class="nav__link" role="listitem">Beranda</a>
+      <a href="dashboard.html" class="nav__link" role="listitem">Dashboard</a>
+      <a href="news.html" class="nav__link" role="listitem">Berita</a>
+      <a href="about.html" class="nav__link" role="listitem">Tentang</a>
+    </div>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" data-search-open aria-label="Buka pencarian (Ctrl+K)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav__icon-btn" id="theme-toggle" aria-label="Aktifkan mode gelap">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="nav__hamburger" aria-label="Buka menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menu navigasi" aria-modal="true">
+  <button class="mobile-menu__close" aria-label="Tutup menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <nav class="mobile-menu__links" aria-label="Menu utama">
+    <a href="index.html" class="mobile-menu__link">Beranda</a>
+    <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <a href="news.html" class="mobile-menu__link">Berita</a>
+    <a href="about.html" class="mobile-menu__link">Tentang</a>
+  </nav>
+  <div class="mobile-menu__footer">
+    <a href="pillars/social-aid.html" class="footer__link">Bantuan Sosial</a>
+    <a href="pillars/climate.html" class="footer__link">Iklim</a>
+    <a href="pillars/education.html" class="footer__link">Pendidikan</a>
+  </div>
+</div>
+
+<!-- SEARCH MODAL -->
+<div class="search-modal" role="dialog" aria-label="Pencarian" aria-modal="true">
+  <button class="search-modal__close" aria-label="Tutup pencarian">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="search-modal__input-wrap">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;color:var(--color-text-muted)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" class="search-modal__input" placeholder="Cari topik, pilar, atau halaman..." aria-label="Cari konten">
+  </div>
+  <div class="search-modal__results" role="list" aria-live="polite"></div>
+</div>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="hero__inner">
+    <p class="eyebrow hero__eyebrow">AI FOR SDGS INDONESIA</p>
+    <h1 class="hero__headline">Bagaimana Kecerdasan Buatan Membentuk Masa Depan Indonesia</h1>
+    <p class="hero__sub">Sebuah eksplorasi data-driven tentang peran teknologi AI dalam mempercepat pencapaian 17 Sustainable Development Goals di Indonesia pada 2030.</p>
+    <div class="hero__meta" aria-label="Metadata artikel">
+      <span>Inisiatif open-source</span>
+      <span class="hero__meta-dot" aria-hidden="true"></span>
+      <span>Diperbarui Mei 2026</span>
+    </div>
+    <div class="hero__actions">
+      <a href="dashboard.html" class="btn btn--primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Lihat Dashboard Data
+      </a>
+      <a href="about.html" class="btn btn--secondary">Tentang Proyek</a>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION: BY THE NUMBERS -->
+<section class="section section--bordered" aria-labelledby="numbers-title">
+  <div class="container">
+    <div class="section__header">
+      <p class="eyebrow section__eyebrow">BY THE NUMBERS</p>
+      <h2 class="section__title" id="numbers-title">Indonesia dalam Angka</h2>
+    </div>
+    <div class="data-callout__grid" role="list">
+      <div class="data-callout__item" role="listitem">
+        <span class="data-callout__number" data-counter data-target="270.6" aria-label="270,6 juta">270.6</span>
+        <span style="font-size:0.875rem;color:var(--color-text-muted);font-family:'JetBrains Mono',monospace">juta penduduk</span>
+        <span class="data-callout__label">Total Populasi Indonesia</span>
+        <span class="data-callout__source">BPS, 2024</span>
+      </div>
+      <div class="data-callout__item" role="listitem">
+        <span class="data-callout__number" data-counter data-target="17" aria-label="17 SDGs">17</span>
+        <span style="font-size:0.875rem;color:var(--color-text-muted);font-family:'JetBrains Mono',monospace">goals</span>
+        <span class="data-callout__label">Sustainable Development Goals</span>
+        <span class="data-callout__source">Target PBB 2030</span>
+      </div>
+      <div class="data-callout__item" role="listitem">
+        <span class="data-callout__number" data-counter data-target="1.580" data-prefix="Rp " aria-label="Rp 1.580 triliun">Rp 1.580</span>
+        <span style="font-size:0.875rem;color:var(--color-text-muted);font-family:'JetBrains Mono',monospace">triliun</span>
+        <span class="data-callout__label">Anggaran Pembangunan SDGs</span>
+        <span class="data-callout__source">APBN 2024</span>
+      </div>
+      <div class="data-callout__item" role="listitem">
+        <span class="data-callout__number" data-counter data-target="64" aria-label="64 persen">64</span>
+        <span style="font-size:0.875rem;color:var(--color-text-muted);font-family:'JetBrains Mono',monospace">%</span>
+        <span class="data-callout__label">Tingkat Pencapaian SDGs</span>
+        <span class="data-callout__source">Bappenas, 2024</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: FIVE PILLARS -->
+<section class="section" aria-labelledby="pillars-title">
+  <div class="container">
+    <div class="section__header">
+      <p class="eyebrow section__eyebrow">LIMA PILAR</p>
+      <h2 class="section__title" id="pillars-title">AI di Garis Depan Pembangunan</h2>
+      <p class="section__subtitle">Lima domain utama di mana kecerdasan buatan sedang mengubah cara Indonesia mencapai tujuan pembangunannya.</p>
+    </div>
+    <div class="pillar-list" role="list">
+
+      <a href="pillars/social-aid.html" class="pillar-card" role="listitem" aria-label="Pilar 01: AI untuk Bantuan Sosial">
+        <span class="pillar-card__number" aria-hidden="true">01</span>
+        <div class="pillar-card__content">
+          <p class="pillar-card__eyebrow">AI untuk Bantuan Sosial</p>
+          <h3 class="pillar-card__title">Algoritma yang Mempercepat dan Memperakurat Penyaluran Bansos</h3>
+          <p class="pillar-card__excerpt">Machine learning kini menjadi tulang punggung penentuan 18,3 juta keluarga penerima manfaat — dari PKH hingga Kartu Sembako.</p>
+          <span class="pillar-card__arrow">
+            Baca selengkapnya
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="pillars/inclusive-economy.html" class="pillar-card" role="listitem" aria-label="Pilar 02: AI untuk Ekonomi Inklusif">
+        <span class="pillar-card__number" aria-hidden="true">02</span>
+        <div class="pillar-card__content">
+          <p class="pillar-card__eyebrow">AI untuk Ekonomi Inklusif</p>
+          <h3 class="pillar-card__title">Credit Scoring Berbasis ML untuk 92 Juta Penduduk Unbanked</h3>
+          <p class="pillar-card__excerpt">Sistem credit scoring berbasis machine learning membuka akses keuangan bagi separuh penduduk yang selama ini terkunci dari layanan perbankan formal.</p>
+          <span class="pillar-card__arrow">
+            Baca selengkapnya
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="pillars/climate.html" class="pillar-card" role="listitem" aria-label="Pilar 03: AI untuk Climate Monitoring">
+        <span class="pillar-card__number" aria-hidden="true">03</span>
+        <div class="pillar-card__content">
+          <p class="pillar-card__eyebrow">AI untuk Climate Monitoring</p>
+          <h3 class="pillar-card__title">Computer Vision Memantau 125 Juta Hektar Hutan secara Real-Time</h3>
+          <p class="pillar-card__excerpt">Citra satelit dan deep learning kini mendeteksi deforestasi dalam hitungan hari — bukan tahun — di hutan tropis terbesar ketiga di dunia.</p>
+          <span class="pillar-card__arrow">
+            Baca selengkapnya
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="pillars/education.html" class="pillar-card" role="listitem" aria-label="Pilar 04: AI Education Platform">
+        <span class="pillar-card__number" aria-hidden="true">04</span>
+        <div class="pillar-card__content">
+          <p class="pillar-card__eyebrow">AI Education Platform</p>
+          <h3 class="pillar-card__title">Personalisasi Pembelajaran untuk 53 Juta Pelajar Indonesia</h3>
+          <p class="pillar-card__excerpt">Dari pulau terluar di Maluku Utara hingga kota satelit di Bekasi — AI berjanji menjembatani ketimpangan pendidikan yang selama ini menganga.</p>
+          <span class="pillar-card__arrow">
+            Baca selengkapnya
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="pillars/agriculture.html" class="pillar-card" role="listitem" aria-label="Pilar 05: AI untuk Smart Agriculture">
+        <span class="pillar-card__number" aria-hidden="true">05</span>
+        <div class="pillar-card__content">
+          <p class="pillar-card__eyebrow">AI untuk Smart Agriculture</p>
+          <h3 class="pillar-card__title">Prediksi Cuaca, Deteksi Hama, dan Optimasi Irigasi untuk 33 Juta Petani</h3>
+          <p class="pillar-card__excerpt">Sensor, citra satelit, dan algoritma kini hadir di sawah — membawa revolusi senyap yang bisa mengubah produktivitas pangan nasional.</p>
+          <span class="pillar-card__arrow">
+            Baca selengkapnya
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: LATEST INSIGHTS -->
+<section class="section section--alt" aria-labelledby="insights-title">
+  <div class="container">
+    <div class="section__header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem">
+      <div>
+        <p class="eyebrow section__eyebrow">BERITA & WAWASAN</p>
+        <h2 class="section__title" id="insights-title">Terkini</h2>
+      </div>
+      <a href="news.html" class="btn btn--ghost" aria-label="Lihat semua berita">Lihat semua →</a>
+    </div>
+    <div class="insights-grid" id="insights-container" role="list" aria-label="Artikel berita terbaru">
+      <!-- Loaded by JS below -->
+      <article class="card" role="listitem">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Visualisasi data digital dengan grafik biru" class="card__image" loading="lazy">
+        <div class="card__body">
+          <p class="card__category">Kebijakan</p>
+          <h3 class="card__title">Bappenas Luncurkan Roadmap AI untuk Pembangunan 2025–2030</h3>
+          <p class="card__meta">8 Mei 2026 · 5 menit baca</p>
+          <p class="card__excerpt">Bappenas resmi merilis peta jalan penggunaan kecerdasan buatan untuk mendukung target pembangunan nasional, mencakup lima sektor prioritas dengan alokasi anggaran Rp 12 triliun hingga 2030.</p>
+        </div>
+      </article>
+      <article class="card" role="listitem">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80" alt="Warga antrian menerima bantuan sosial" class="card__image" loading="lazy">
+        <div class="card__body">
+          <p class="card__category">Riset</p>
+          <h3 class="card__title">Studi BRIN: AI Bansos Sukses Kurangi Exclusion Error 23%</h3>
+          <p class="card__meta">2 Mei 2026 · 7 menit baca</p>
+          <p class="card__excerpt">Hasil evaluasi satu tahun program pilot BRIN-Kemensos menunjukkan model machine learning mampu mengidentifikasi penerima bansos yang terlewat oleh survei manual.</p>
+        </div>
+      </article>
+      <article class="card" role="listitem">
+        <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80" alt="Hutan tropis dari udara" class="card__image" loading="lazy">
+        <div class="card__body">
+          <p class="card__category">Event</p>
+          <h3 class="card__title">Indonesia Jadi Tuan Rumah ASEAN AI for Climate Summit</h3>
+          <p class="card__meta">28 April 2026 · 4 menit baca</p>
+          <p class="card__excerpt">Jakarta menjadi pusat perhatian komunitas AI dan lingkungan global saat 22 negara ASEAN berkumpul membahas standar bersama untuk pemantauan iklim.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">AI for SDGs Indonesia</span>
+      <p class="footer__tagline">Mendokumentasikan peran kecerdasan buatan dalam mempercepat pencapaian 17 SDGs di Indonesia.</p>
+    </div>
+    <div>
+      <p class="footer__section-title">Pilar</p>
+      <nav class="footer__links" aria-label="Navigasi pilar">
+        <a href="pillars/social-aid.html" class="footer__link">AI & Bantuan Sosial</a>
+        <a href="pillars/inclusive-economy.html" class="footer__link">AI & Ekonomi Inklusif</a>
+        <a href="pillars/climate.html" class="footer__link">AI & Iklim</a>
+        <a href="pillars/education.html" class="footer__link">AI & Pendidikan</a>
+        <a href="pillars/agriculture.html" class="footer__link">AI & Pertanian</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__section-title">Navigasi</p>
+      <nav class="footer__links" aria-label="Navigasi utama footer">
+        <a href="dashboard.html" class="footer__link">Dashboard Data</a>
+        <a href="news.html" class="footer__link">Berita & Wawasan</a>
+        <a href="about.html" class="footer__link">Tentang Proyek</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__section-title">Sumber Data</p>
+      <nav class="footer__links" aria-label="Sumber data">
+        <a href="https://www.bappenas.go.id" class="footer__link" target="_blank" rel="noopener noreferrer">Bappenas</a>
+        <a href="https://www.bps.go.id" class="footer__link" target="_blank" rel="noopener noreferrer">BPS</a>
+        <a href="https://www.brin.go.id" class="footer__link" target="_blank" rel="noopener noreferrer">BRIN</a>
+        <a href="https://www.ojk.go.id" class="footer__link" target="_blank" rel="noopener noreferrer">OJK</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copyright">© 2026 AI for SDGs Indonesia. Dirilis di bawah lisensi MIT.</p>
+    <p class="footer__copyright">Data bersifat indikatif. Verifikasi melalui sumber resmi sebelum dikutip.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/counter.js"></script>
+</body>
+</html>

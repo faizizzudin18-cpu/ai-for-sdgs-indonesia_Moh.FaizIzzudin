@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "slug": "bappenas-roadmap-ai-2025-2030",
+    "title": "Bappenas Luncurkan Roadmap AI untuk Pembangunan 2025–2030",
+    "date": "2026-05-08",
+    "dateDisplay": "8 Mei 2026",
+    "category": "Kebijakan",
+    "pillar": "all",
+    "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+    "imageAlt": "Visualisasi data digital dengan grafik biru",
+    "excerpt": "Bappenas resmi merilis peta jalan penggunaan kecerdasan buatan untuk mendukung target pembangunan nasional, mencakup lima sektor prioritas dengan alokasi anggaran Rp 12 triliun hingga 2030.",
+    "readTime": "5 menit baca"
+  },
+  {
+    "id": 2,
+    "slug": "studi-brin-ai-bansos-exclusion-error",
+    "title": "Studi BRIN: AI Bansos Sukses Kurangi Exclusion Error 23%",
+    "date": "2026-05-02",
+    "dateDisplay": "2 Mei 2026",
+    "category": "Riset",
+    "pillar": "social-aid",
+    "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
+    "imageAlt": "Warga antrian menerima bantuan sosial",
+    "excerpt": "Hasil evaluasi satu tahun program pilot BRIN-Kemensos menunjukkan model machine learning mampu mengidentifikasi penerima bansos yang terlewat oleh survei manual di delapan kabupaten Jawa Tengah.",
+    "readTime": "7 menit baca"
+  },
+  {
+    "id": 3,
+    "slug": "indonesia-asean-ai-climate-summit",
+    "title": "Indonesia Jadi Tuan Rumah ASEAN AI for Climate Summit",
+    "date": "2026-04-28",
+    "dateDisplay": "28 April 2026",
+    "category": "Event",
+    "pillar": "climate",
+    "image": "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80",
+    "imageAlt": "Hutan tropis dari udara dengan sungai berkelok",
+    "excerpt": "Jakarta menjadi pusat perhatian komunitas AI dan lingkungan global saat 22 negara ASEAN plus mitra dialog berkumpul membahas standar bersama penggunaan AI untuk pemantauan iklim dan keanekaragaman hayati.",
+    "readTime": "4 menit baca"
+  },
+  {
+    "id": 4,
+    "slug": "polemik-credit-scoring-ojk-code-of-ethics",
+    "title": "Polemik Algoritma Credit Scoring: OJK Susun Code of Ethics",
+    "date": "2026-04-22",
+    "dateDisplay": "22 April 2026",
+    "category": "Regulasi",
+    "pillar": "economy",
+    "image": "https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=800&q=80",
+    "imageAlt": "Pedagang pasar sedang transaksi digital",
+    "excerpt": "Di tengah pertumbuhan pesat fintech lending di Indonesia, OJK mulai menyusun kerangka etik penggunaan data alternatif dalam penilaian kredit — merespons kekhawatiran soal surveillance creep dan diskriminasi algoritma.",
+    "readTime": "6 menit baca"
+  },
+  {
+    "id": 5,
+    "slug": "efishery-1-juta-pembudidaya-ai",
+    "title": "eFishery Capai 1 Juta Pembudidaya Terkoneksi AI",
+    "date": "2026-04-15",
+    "dateDisplay": "15 April 2026",
+    "category": "Industri",
+    "pillar": "agriculture",
+    "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&q=80",
+    "imageAlt": "Tambak ikan modern dengan teknologi sensor",
+    "excerpt": "Startup agritech berbasis Bandung ini mencatat milestone: satu juta pembudidaya ikan dan udang kini menggunakan sistem auto-feeder berbasis AI mereka, menghemat rata-rata 30% biaya pakan per tahun.",
+    "readTime": "4 menit baca"
+  },
+  {
+    "id": 6,
+    "slug": "govtech-edu-4-juta-guru-ai",
+    "title": "GovTech Edu: 4 Juta Guru Kini Pakai Rekomendasi AI",
+    "date": "2026-04-08",
+    "dateDisplay": "8 April 2026",
+    "category": "Pendidikan",
+    "pillar": "education",
+    "image": "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80",
+    "imageAlt": "Guru mengajar siswa di kelas dengan teknologi digital",
+    "excerpt": "Kementerian Pendidikan mengumumkan seluruh 4 juta guru yang terdaftar di Platform Merdeka Mengajar kini mendapat rekomendasi konten dan pelatihan berbasis AI — sebuah adopsi teknologi terbesar dalam sejarah sistem pendidikan Indonesia.",
+    "readTime": "5 menit baca"
+  }
+]

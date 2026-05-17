@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bagaimana algoritma machine learning mengubah cara Indonesia menyalurkan bantuan sosial kepada 18,3 juta keluarga penerima manfaat.">
+  <title>AI untuk Bantuan Sosial — AI for SDGs Indonesia</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script src="../js/theme.js"></script>
+</head>
+<body>
+
+<!-- READING PROGRESS -->
+<div class="reading-progress" role="progressbar" aria-label="Progress membaca" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav" role="navigation" aria-label="Navigasi utama">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__logo" aria-label="AI for SDGs Indonesia — Beranda">AI for <span>SDGs</span></a>
+    <div class="nav__links" role="list">
+      <a href="../index.html" class="nav__link" role="listitem">Beranda</a>
+      <a href="../dashboard.html" class="nav__link" role="listitem">Dashboard</a>
+      <a href="../news.html" class="nav__link" role="listitem">Berita</a>
+      <a href="../about.html" class="nav__link" role="listitem">Tentang</a>
+    </div>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" data-search-open aria-label="Buka pencarian">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav__icon-btn" id="theme-toggle" aria-label="Aktifkan mode gelap">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="nav__hamburger" aria-label="Buka menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menu navigasi" aria-modal="true">
+  <button class="mobile-menu__close" aria-label="Tutup menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <nav class="mobile-menu__links">
+    <a href="../index.html" class="mobile-menu__link">Beranda</a>
+    <a href="../dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <a href="../news.html" class="mobile-menu__link">Berita</a>
+    <a href="../about.html" class="mobile-menu__link">Tentang</a>
+  </nav>
+</div>
+
+<!-- SEARCH MODAL -->
+<div class="search-modal" role="dialog" aria-label="Pencarian" aria-modal="true">
+  <button class="search-modal__close" aria-label="Tutup pencarian">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="search-modal__input-wrap">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;color:var(--color-text-muted)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" class="search-modal__input" placeholder="Cari topik, pilar, atau halaman..." aria-label="Cari konten">
+  </div>
+  <div class="search-modal__results" role="list" aria-live="polite"></div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="pillar-breadcrumb page-wrapper" role="navigation" aria-label="Breadcrumb">
+  <div class="container pillar-breadcrumb__inner">
+    <a href="../index.html" class="pillar-breadcrumb__link">Beranda</a>
+    <span class="pillar-breadcrumb__sep" aria-hidden="true">/</span>
+    <span aria-current="page">AI untuk Bantuan Sosial</span>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="pillar-hero" role="img" aria-label="Ilustrasi artikel: warga urban Indonesia">
+  <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600&q=80"
+       alt="Warga urban Indonesia — representasi penerima program bantuan sosial"
+       class="pillar-hero__image"
+       loading="eager">
+  <div class="pillar-hero__overlay">
+    <p class="eyebrow pillar-hero__eyebrow">PILAR 01 · BANTUAN SOSIAL</p>
+    <h1 class="pillar-hero__headline">Algoritma yang Mengubah Cara Indonesia Menyalurkan Bansos</h1>
+    <p class="pillar-hero__deck">Dari Program Keluarga Harapan hingga Kartu Sembako, machine learning kini menjadi tulang punggung penentuan siapa yang berhak menerima bantuan negara.</p>
+    <p class="pillar-hero__byline">Tim AI for SDGs Indonesia · 12 menit baca</p>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<main class="pillar-content" id="main-content">
+  <div class="article-layout">
+    <article class="article-layout__main">
+      <div class="article-body">
+
+        <!-- Opening -->
+        <p class="drop-cap">Setiap tahun, pemerintah Indonesia menyalurkan lebih dari Rp 470 triliun melalui berbagai program perlindungan sosial. Angka itu mencakup Program Keluarga Harapan (PKH), Kartu Sembako, Bantuan Langsung Tunai, hingga subsidi listrik dan elpiji. Namun di balik angka besar tersebut, tersembunyi pertanyaan klasik: bagaimana memastikan bantuan jatuh ke tangan yang benar-benar membutuhkan?</p>
+
+        <p>Selama dua dekade terakhir, jawabannya bergantung pada Data Terpadu Kesejahteraan Sosial (DTKS) — basis data yang diperbarui melalui survei lapangan. Tapi DTKS punya kelemahan struktural: data cepat usang, exclusion error mencapai 40%, dan banyak rumah tangga rentan tidak terdaftar.</p>
+
+        <p>Di sinilah kecerdasan buatan masuk.</p>
+
+        <!-- Data callout -->
+        <div class="data-callout" role="region" aria-label="Statistik kunci">
+          <div class="data-callout__grid">
+            <div class="data-callout__item">
+              <span class="data-callout__number" data-counter data-target="470" data-prefix="Rp ">Rp 470</span>
+              <span class="data-callout__label">Triliun anggaran bansos</span>
+              <span class="data-callout__source">APBN 2024</span>
+            </div>
+            <div class="data-callout__item">
+              <span class="data-callout__number" data-counter data-target="40">40</span>
+              <span class="data-callout__label" style="margin-top:0.25rem">% exclusion error DTKS</span>
+              <span class="data-callout__source">Survei independen 2023</span>
+            </div>
+            <div class="data-callout__item">
+              <span class="data-callout__number" data-counter data-target="18.3">18.3</span>
+              <span class="data-callout__label" style="margin-top:0.25rem">Juta keluarga penerima PKH</span>
+              <span class="data-callout__source">Kemensos, 2024</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Konteks -->
+        <section class="article-section" aria-labelledby="context-title">
+          <h2 id="context-title">Konteks Indonesia</h2>
+          <p>Bappenas memperkirakan 25,2 juta penduduk Indonesia masih hidup di bawah garis kemiskinan pada 2024. Targeting bansos yang akurat menjadi krusial bukan hanya secara fiskal, tapi juga sebagai kontrak sosial antara negara dan warganya.</p>
+          <p>Selama ini, sistem konvensional mengandalkan musyawarah desa dan kunjungan petugas sosial. Prosesnya lambat, mahal, dan sangat bergantung pada integritas aparat lapangan. Di daerah terpencil seperti Papua dan NTT, survei bisa memakan waktu berbulan-bulan — sementara kebutuhan masyarakat tidak menunggu.</p>
+        </section>
+
+        <blockquote class="pull-quote">
+          "Targeting yang akurat bukan hanya soal efisiensi anggaran — ini soal apakah seorang ibu di pedalaman NTT bisa menyekolahkan anaknya bulan ini."
+        </blockquote>
+
+        <!-- Studi kasus 1 -->
+        <section class="article-section" aria-labelledby="brin-title">
+          <h2 id="brin-title">Studi Kasus: Predictive Targeting BRIN</h2>
+          <p>Pada 2023, Badan Riset dan Inovasi Nasional (BRIN) bersama Kementerian Sosial mengembangkan model machine learning untuk memprediksi tingkat kerentanan rumah tangga berdasarkan 47 indikator: dari konsumsi listrik, kepemilikan aset, hingga citra satelit kondisi rumah.</p>
+          <p>Hasil pilotnya di Jawa Tengah menunjukkan akurasi targeting meningkat 23% dibanding metode konvensional. Lebih dari itu, model ini mampu mengidentifikasi rumah tangga yang tidak terdaftar di DTKS namun secara objektif memenuhi syarat penerima bantuan.</p>
+          <p>Model ini menggabungkan tiga sumber data: (1) data administratif dari Dukcapil dan PLN, (2) data satelit resolusi tinggi dari Copernicus, dan (3) data survei lapangan yang sudah ada. Hasilnya divalidasi dengan kunjungan lapangan ke sampel acak sebelum rollout lebih luas.</p>
+        </section>
+
+        <!-- Studi kasus 2 -->
+        <section class="article-section" aria-labelledby="fraud-title">
+          <h2 id="fraud-title">Studi Kasus: Deteksi Fraud Bansos</h2>
+          <p>Kementerian Sosial sejak 2022 mengoperasikan sistem anomaly detection berbasis AI untuk mendeteksi pola fraud — mulai dari NIK ganda, alamat fiktif, hingga penerima yang sebenarnya sudah meninggal.</p>
+          <p>Pada tahun pertama operasinya, sistem ini mengidentifikasi 1,1 juta penerima tidak layak, menghemat Rp 2,3 triliun anggaran. Penghematan ini tidak dipotong dari program, melainkan dialihkan untuk memperluas cakupan ke penerima yang selama ini terlewat.</p>
+          <p>Sistem bekerja dengan membandingkan data DTKS secara real-time terhadap database Dukcapil, Taspen, dan BPJS — mendeteksi inkonsistensi yang sulit ditangkap oleh verifikasi manual.</p>
+        </section>
+
+        <!-- Tantangan -->
+        <section class="article-section" aria-labelledby="challenge-title">
+          <h2 id="challenge-title">Tantangan yang Tidak Boleh Diabaikan</h2>
+          <p>Tapi AI dalam bansos bukan tanpa kritik. Akademisi UI dan ITB mengingatkan: bias data historis bisa terbawa ke model. Kalau survei lapangan selama ini systematically underrepresented penduduk adat di Papua, model AI akan terus mengabaikan mereka.</p>
+          <p>Selain itu, transparansi algoritma menjadi isu fundamental. Saat seseorang ditolak menerima bantuan karena "skor AI", apakah ia berhak tahu kenapa? Mekanisme banding belum tersedia di sebagian besar implementasi pilot.</p>
+          <p>Ada pula risiko over-reliance: jika model salah di skala besar — katakanlah, secara sistematis mengeksklusi satu kelompok etnis — dampaknya jauh lebih masif dibanding kesalahan survei konvensional yang terlokalisir.</p>
+        </section>
+
+        <!-- Potensi dampak -->
+        <section class="article-section" aria-labelledby="impact-title">
+          <h2 id="impact-title">Potensi Dampak pada 2030</h2>
+          <p>Jika diterapkan secara nasional dengan tata kelola yang benar, AI for social aid berpotensi mengurangi exclusion error hingga 50% dan menghemat anggaran hingga Rp 8 triliun per tahun — anggaran yang bisa dialihkan untuk memperluas cakupan bantuan, bukan menguranginya.</p>
+          <p>Lebih jauh, data yang lebih akurat tentang siapa yang miskin dan mengapa mereka miskin bisa menjadi fondasi kebijakan pengentasan kemiskinan yang lebih efektif. AI bukan hanya alat penyalur bansos — tapi potensial menjadi sistem deteksi dini kerentanan sosial.</p>
+        </section>
+
+        <!-- Related SDGs -->
+        <div class="related-sdgs" role="region" aria-labelledby="sdgs-title">
+          <p class="related-sdgs__title" id="sdgs-title">SDGs Terkait</p>
+          <div class="sdg-tags" role="list">
+            <span class="sdg-tag" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              SDG 1 — Tanpa Kemiskinan
+            </span>
+            <span class="sdg-tag" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              SDG 2 — Tanpa Kelaparan
+            </span>
+            <span class="sdg-tag" role="listitem">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              SDG 10 — Berkurangnya Ketimpangan
+            </span>
+          </div>
+        </div>
+
+        <!-- Pillar nav -->
+        <div class="pillar-nav" role="navigation" aria-label="Navigasi antar pilar">
+          <a href="../index.html" class="pillar-nav__item" aria-label="Kembali ke beranda">
+            <span class="pillar-nav__direction">← Kembali</span>
+            <span class="pillar-nav__title">Lima Pilar AI for SDGs</span>
+          </a>
+          <a href="inclusive-economy.html" class="pillar-nav__item pillar-nav__item--next" aria-label="Baca pilar berikutnya: AI untuk Ekonomi Inklusif">
+            <span class="pillar-nav__direction">Pilar berikutnya →</span>
+            <span class="pillar-nav__title">AI untuk Ekonomi Inklusif</span>
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="article-layout__sidebar" aria-label="Sidebar navigasi">
+      <div class="sidebar-section">
+        <p class="sidebar-section__title">Daftar Isi</p>
+        <nav class="sidebar-nav" aria-label="Daftar isi artikel">
+          <a href="#context-title" class="sidebar-nav__link">Konteks Indonesia</a>
+          <a href="#brin-title" class="sidebar-nav__link">Studi Kasus: BRIN</a>
+          <a href="#fraud-title" class="sidebar-nav__link">Studi Kasus: Deteksi Fraud</a>
+          <a href="#challenge-title" class="sidebar-nav__link">Tantangan</a>
+          <a href="#impact-title" class="sidebar-nav__link">Potensi Dampak</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-section__title">Pilar Lainnya</p>
+        <nav class="sidebar-nav" aria-label="Navigasi pilar lainnya">
+          <a href="inclusive-economy.html" class="sidebar-nav__link">02 · Ekonomi Inklusif</a>
+          <a href="climate.html" class="sidebar-nav__link">03 · Climate Monitoring</a>
+          <a href="education.html" class="sidebar-nav__link">04 · Pendidikan</a>
+          <a href="agriculture.html" class="sidebar-nav__link">05 · Smart Agriculture</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-section__title">SDGs Terkait</p>
+        <div class="sdg-tags" role="list" style="flex-direction:column">
+          <span class="sdg-tag" role="listitem">SDG 1 · Tanpa Kemiskinan</span>
+          <span class="sdg-tag" role="listitem">SDG 2 · Tanpa Kelaparan</span>
+          <span class="sdg-tag" role="listitem">SDG 10 · Berkurangnya Ketimpangan</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">AI for SDGs Indonesia</span>
+      <p class="footer__tagline">Mendokumentasikan peran kecerdasan buatan dalam mempercepat pencapaian 17 SDGs di Indonesia.</p>
+    </div>
+    <div>
+      <p class="footer__section-title">Pilar</p>
+      <nav class="footer__links" aria-label="Navigasi pilar">
+        <a href="social-aid.html" class="footer__link">AI & Bantuan Sosial</a>
+        <a href="inclusive-economy.html" class="footer__link">AI & Ekonomi Inklusif</a>
+        <a href="climate.html" class="footer__link">AI & Iklim</a>
+        <a href="education.html" class="footer__link">AI & Pendidikan</a>
+        <a href="agriculture.html" class="footer__link">AI & Pertanian</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__section-title">Navigasi</p>
+      <nav class="footer__links" aria-label="Navigasi utama footer">
+        <a href="../dashboard.html" class="footer__link">Dashboard Data</a>
+        <a href="../news.html" class="footer__link">Berita & Wawasan</a>
+        <a href="../about.html" class="footer__link">Tentang Proyek</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copyright">© 2026 AI for SDGs Indonesia. Dirilis di bawah lisensi MIT.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/counter.js"></script>
+</body>
+</html>

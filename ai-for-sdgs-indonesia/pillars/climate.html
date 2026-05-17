@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bagaimana computer vision dan citra satelit digunakan untuk memantau 125 juta hektar hutan Indonesia secara real-time.">
+  <title>AI untuk Climate Monitoring — AI for SDGs Indonesia</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script src="../js/theme.js"></script>
+</head>
+<body>
+
+<div class="reading-progress" role="progressbar" aria-label="Progress membaca" aria-valuemin="0" aria-valuemax="100"></div>
+
+<nav class="nav" role="navigation" aria-label="Navigasi utama">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__logo" aria-label="AI for SDGs Indonesia — Beranda">AI for <span>SDGs</span></a>
+    <div class="nav__links" role="list">
+      <a href="../index.html" class="nav__link" role="listitem">Beranda</a>
+      <a href="../dashboard.html" class="nav__link" role="listitem">Dashboard</a>
+      <a href="../news.html" class="nav__link" role="listitem">Berita</a>
+      <a href="../about.html" class="nav__link" role="listitem">Tentang</a>
+    </div>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" data-search-open aria-label="Buka pencarian">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav__icon-btn" id="theme-toggle" aria-label="Aktifkan mode gelap">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="nav__hamburger" aria-label="Buka menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menu navigasi" aria-modal="true">
+  <button class="mobile-menu__close" aria-label="Tutup menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <nav class="mobile-menu__links">
+    <a href="../index.html" class="mobile-menu__link">Beranda</a>
+    <a href="../dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <a href="../news.html" class="mobile-menu__link">Berita</a>
+    <a href="../about.html" class="mobile-menu__link">Tentang</a>
+  </nav>
+</div>
+
+<div class="search-modal" role="dialog" aria-label="Pencarian" aria-modal="true">
+  <button class="search-modal__close" aria-label="Tutup pencarian">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="search-modal__input-wrap">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;color:var(--color-text-muted)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" class="search-modal__input" placeholder="Cari topik, pilar, atau halaman..." aria-label="Cari konten">
+  </div>
+  <div class="search-modal__results" role="list" aria-live="polite"></div>
+</div>
+
+<div class="pillar-breadcrumb page-wrapper" role="navigation" aria-label="Breadcrumb">
+  <div class="container pillar-breadcrumb__inner">
+    <a href="../index.html" class="pillar-breadcrumb__link">Beranda</a>
+    <span class="pillar-breadcrumb__sep" aria-hidden="true">/</span>
+    <span aria-current="page">AI untuk Climate Monitoring</span>
+  </div>
+</div>
+
+<div class="pillar-hero" role="img" aria-label="Hutan tropis Indonesia dari udara">
+  <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=1600&q=80"
+       alt="Hutan tropis Indonesia yang hijau lebat dilihat dari udara dengan sungai berkelok"
+       class="pillar-hero__image"
+       loading="eager">
+  <div class="pillar-hero__overlay">
+    <p class="eyebrow pillar-hero__eyebrow">PILAR 03 · CLIMATE MONITORING</p>
+    <h1 class="pillar-hero__headline">Mata dari Langit: Bagaimana AI Memantau 125 Juta Hektar Hutan Indonesia</h1>
+    <p class="pillar-hero__deck">Computer vision dan citra satelit kini bisa mendeteksi penggundulan hutan dalam hitungan hari — bukan tahun. Pertanyaannya: cukup cepatkah untuk menyelamatkan tutupan hutan tropis terbesar ketiga di dunia?</p>
+    <p class="pillar-hero__byline">Tim AI for SDGs Indonesia · 15 menit baca</p>
+  </div>
+</div>
+
+<main class="pillar-content" id="main-content">
+  <div class="article-layout">
+    <article class="article-layout__main">
+      <div class="article-body">
+
+        <p class="drop-cap">Indonesia kehilangan 9,75 juta hektar hutan primer antara 2002 dan 2023 — luas yang hampir setara dengan Pulau Jawa. Sebagian besar terjadi diam-diam: ekspansi sawit, illegal logging, dan kebakaran lahan gambut. Selama bertahun-tahun, deteksinya bergantung pada laporan lapangan yang lambat dan terbatas.</p>
+
+        <p>Sejak 2019, semuanya berubah.</p>
+
+        <div class="data-callout" role="region" aria-label="Statistik kunci">
+          <div class="data-callout__grid">
+            <div class="data-callout__item">
+              <span class="data-callout__number" data-counter data-target="125">125</span>
+              <span class="data-callout__label" style="margin-top:0.25rem">Juta hektar hutan terpantau</span>
+              <span class="data-callout__source">KLHK, 2024</span>
+            </div>
+            <div class="data-callout__item">
+              <span class="data-callout__number" data-counter data-target="9.75">9.75</span>
+              <span class="data-callout__label" style="margin-top:0.25rem">Juta Ha hutan hilang 2002–2023</span>
+              <span class="data-callout__source">Global Forest Watch</span>
+            </div>
+            <div class="data-callout__item">
+              <span class="data-callout__number" data-counter data-target="81">81</span>
+              <span class="data-callout__label" style="margin-top:0.25rem">% akurasi prediksi karhutla</span>
+              <span class="data-callout__source">BRIN-BMKG, 2023</span>
+            </div>
+          </div>
+        </div>
+
+        <section class="article-section" aria-labelledby="gfw-title">
+          <h2 id="gfw-title">Global Forest Watch dan Indonesia</h2>
+          <p>Sistem GLAD alerts dari University of Maryland, dikombinasikan dengan model deep learning yang dilatih khusus untuk tutupan hutan Indonesia, kini mengirimkan peringatan deforestasi dalam radius 30×30 meter setiap minggu. KLHK dan beberapa NGO seperti Greenpeace dan Auriga Nusantara menggunakan data ini untuk patroli prioritas.</p>
+          <p>Model ini menganalisis perbedaan spektral antara citra satelit Landsat minggu ini dengan minggu lalu. Perubahan signifikan — yang mengindikasikan penebangan atau kebakaran — langsung menghasilkan alert yang dikirim ke petugas lapangan via aplikasi mobile.</p>
+        </section>
+
+        <blockquote class="pull-quote">
+          "Dulu butuh enam bulan untuk tahu sebuah area di Kalimantan sudah dibabat. Sekarang, lima hari."
+        </blockquote>
+
+        <section class="article-section" aria-labelledby="karhutla-title">
+          <h2 id="karhutla-title">Studi Kasus: Deteksi Karhutla BRIN-BMKG</h2>
+          <p>BRIN dan BMKG mengembangkan model machine learning yang mengkombinasikan data Hotspot MODIS, kelembaban tanah, dan prediksi cuaca untuk memprediksi risiko karhutla tujuh hari ke depan. Pada musim kering 2023, sistem ini memberikan akurasi prediksi 81% untuk Sumatera dan Kalimantan.</p>
+          <p>Prediksi ini digunakan untuk pre-positioning helikopter pemadam, mobilisasi Brigade Manggala Agni ke titik rawan, dan penetapan status siaga dini. Diperkirakan, intervensi berbasis prediksi ini berhasil mencegah kebakaran lahan gambut di 23 titik rawan selama 2023.</p>
+        </section>
+
+        <section class="article-section" aria-labelledby="jakarta-air-title">
+          <h2 id="jakarta-air-title">Studi Kasus: Monitoring Kualitas Udara Jakarta</h2>
+          <p>Dengan jaringan low-cost sensor dan model AI untuk kalibrasi data, Vital Strategies dan Pemprov DKI Jakarta sejak 2022 menyediakan peta polusi udara real-time per kecamatan. Data ini sekarang dipakai untuk kebijakan ganjil-genap berbasis polusi dan early warning bagi sekolah.</p>
+          <p>Inovasi utamanya bukan sensor — yang sudah ada sejak lama — tapi model AI yang mengkalibrasi data low-cost sensor agar setara akurasinya dengan stasiun monitoring BMKG yang mahal. Ini memungkinkan jaringan sensor jauh lebih luas dan lebih murah dipasang.</p>
+        </section>
+
+        <section class="article-section" aria-labelledby="coral-title">
+          <h2 id="coral-title">Studi Kasus: Coral Bleaching Detection</h2>
+          <p>Tim peneliti ITB dan LIPI (BRIN) menggunakan computer vision pada citra underwater untuk mendeteksi tingkat bleaching karang di Raja Ampat dan Wakatobi. Dengan dataset 50.000+ gambar, model mereka mencapai akurasi 89% dalam mengklasifikasikan tingkat kesehatan karang.</p>
+          <p>Sebelumnya, survei kesehatan karang dilakukan manual oleh penyelam terlatih — mahal, lambat, dan tidak skalabel. Dengan AI, cakupan monitoring bisa diperluas 10× dengan biaya yang sama, menggunakan kamera underwater terpasang yang beroperasi otomatis.</p>
+        </section>
+
+        <section class="article-section" aria-labelledby="climate-challenge-title">
+          <h2 id="climate-challenge-title">Deteksi ≠ Pencegahan</h2>
+          <p>Deteksi tidak sama dengan pencegahan. Sistem AI bisa mengirim alert deforestasi dalam hitungan hari, tapi tindakan lanjutan tetap bergantung pada penegakan hukum di lapangan — yang sering kali lambat dan rentan kompromi.</p>
+          <p>Selain itu, sebagian besar model dilatih dengan data dari negara maju. Adaptasi untuk geografi Indonesia membutuhkan investasi data labeling lokal yang masih kurang. Hutan gambut tropis, misalnya, memiliki spektral yang berbeda dari hutan boreal di mana banyak model dilatih pertama kali.</p>
+        </section>
+
+        <section class="article-section" aria-labelledby="climate-impact-title">
+          <h2 id="climate-impact-title">Potensi Dampak pada 2030</h2>
+          <p>Jika kombinasi monitoring AI dan penegakan hukum digital berjalan optimal, Indonesia berpotensi memangkas laju deforestasi hingga 35% pada 2030 — sebuah angka yang berarti menyelamatkan 1,2 juta hektar hutan tropis dan mencegah emisi 600 juta ton CO₂.</p>
+          <p>Angka terakhir itu setara dengan emisi tahunan sekitar 130 juta mobil. Dalam konteks target Paris Agreement, ini bukan angka kecil.</p>
+        </section>
+
+        <div class="related-sdgs" role="region" aria-labelledby="sdgs-climate-title">
+          <p class="related-sdgs__title" id="sdgs-climate-title">SDGs Terkait</p>
+          <div class="sdg-tags" role="list">
+            <span class="sdg-tag" role="listitem">SDG 13 — Penanganan Iklim</span>
+            <span class="sdg-tag" role="listitem">SDG 14 — Ekosistem Laut</span>
+            <span class="sdg-tag" role="listitem">SDG 15 — Ekosistem Daratan</span>
+          </div>
+        </div>
+
+        <div class="pillar-nav" role="navigation" aria-label="Navigasi antar pilar">
+          <a href="inclusive-economy.html" class="pillar-nav__item" aria-label="Pilar sebelumnya: Ekonomi Inklusif">
+            <span class="pillar-nav__direction">← Pilar sebelumnya</span>
+            <span class="pillar-nav__title">AI untuk Ekonomi Inklusif</span>
+          </a>
+          <a href="education.html" class="pillar-nav__item pillar-nav__item--next" aria-label="Pilar berikutnya: Pendidikan">
+            <span class="pillar-nav__direction">Pilar berikutnya →</span>
+            <span class="pillar-nav__title">AI Education Platform</span>
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+    <aside class="article-layout__sidebar" aria-label="Sidebar navigasi">
+      <div class="sidebar-section">
+        <p class="sidebar-section__title">Daftar Isi</p>
+        <nav class="sidebar-nav" aria-label="Daftar isi artikel">
+          <a href="#gfw-title" class="sidebar-nav__link">Global Forest Watch</a>
+          <a href="#karhutla-title" class="sidebar-nav__link">Studi Kasus: Karhutla</a>
+          <a href="#jakarta-air-title" class="sidebar-nav__link">Studi Kasus: Kualitas Udara</a>
+          <a href="#coral-title" class="sidebar-nav__link">Studi Kasus: Coral Bleaching</a>
+          <a href="#climate-challenge-title" class="sidebar-nav__link">Tantangan</a>
+          <a href="#climate-impact-title" class="sidebar-nav__link">Potensi Dampak</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-section__title">Pilar Lainnya</p>
+        <nav class="sidebar-nav" aria-label="Navigasi pilar lainnya">
+          <a href="social-aid.html" class="sidebar-nav__link">01 · Bantuan Sosial</a>
+          <a href="inclusive-economy.html" class="sidebar-nav__link">02 · Ekonomi Inklusif</a>
+          <a href="education.html" class="sidebar-nav__link">04 · Pendidikan</a>
+          <a href="agriculture.html" class="sidebar-nav__link">05 · Smart Agriculture</a>
+        </nav>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">AI for SDGs Indonesia</span>
+      <p class="footer__tagline">Mendokumentasikan peran kecerdasan buatan dalam mempercepat pencapaian 17 SDGs di Indonesia.</p>
+    </div>
+    <div>
+      <p class="footer__section-title">Pilar</p>
+      <nav class="footer__links" aria-label="Navigasi pilar">
+        <a href="social-aid.html" class="footer__link">AI & Bantuan Sosial</a>
+        <a href="inclusive-economy.html" class="footer__link">AI & Ekonomi Inklusif</a>
+        <a href="climate.html" class="footer__link">AI & Iklim</a>
+        <a href="education.html" class="footer__link">AI & Pendidikan</a>
+        <a href="agriculture.html" class="footer__link">AI & Pertanian</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__section-title">Navigasi</p>
+      <nav class="footer__links" aria-label="Navigasi utama footer">
+        <a href="../dashboard.html" class="footer__link">Dashboard Data</a>
+        <a href="../news.html" class="footer__link">Berita & Wawasan</a>
+        <a href="../about.html" class="footer__link">Tentang Proyek</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copyright">© 2026 AI for SDGs Indonesia. Dirilis di bawah lisensi MIT.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/counter.js"></script>
+</body>
+</html>

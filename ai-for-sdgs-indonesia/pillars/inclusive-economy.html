@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Machine learning dan inklusi keuangan: bagaimana AI membuka akses keuangan bagi 92 juta warga Indonesia yang unbanked.">
+  <title>AI untuk Ekonomi Inklusif — AI for SDGs Indonesia</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script src="../js/theme.js"></script>
+</head>
+<body>
+
+<div class="reading-progress" role="progressbar" aria-label="Progress membaca" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav" role="navigation" aria-label="Navigasi utama">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__logo" aria-label="AI for SDGs Indonesia — Beranda">AI for <span>SDGs</span></a>
+    <div class="nav__links" role="list">
+      <a href="../index.html" class="nav__link" role="listitem">Beranda</a>
+      <a href="../dashboard.html" class="nav__link" role="listitem">Dashboard</a>
+      <a href="../news.html" class="nav__link" role="listitem">Berita</a>
+      <a href="../about.html" class="nav__link" role="listitem">Tentang</a>
+    </div>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" data-search-open aria-label="Buka pencarian">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav__icon-btn" id="theme-toggle" aria-label="Aktifkan mode gelap">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="nav__hamburger" aria-label="Buka menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menu navigasi" aria-modal="true">
+  <button class="mobile-menu__close" aria-label="Tutup menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <nav class="mobile-menu__links">
+    <a href="../index.html" class="mobile-menu__link">Beranda</a>
+    <a href="../dashboard.html" class="mobile-menu__link">Dashboard</a>
+    <a href="../news.html" class="mobile-menu__link">Berita</a>
+    <a href="../about.html" class="mobile-menu__link">Tentang</a>
+  </nav>
+</div>
+
+<div class="search-modal" role="dialog" aria-label="Pencarian" aria-modal="true">
+  <button class="search-modal__close" aria-label="Tutup pencarian">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="search-modal__input-wrap">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;color:var(--color-text-muted)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" class="search-modal__input" placeholder="Cari topik, pilar, atau halaman..." aria-label="Cari konten">
+  </div>
+  <div class="search-modal__results" role="list" aria-live="polite"></div>
+</div>
+
+<div class="pillar-breadcrumb page-wrapper" role="navigation" aria-label="Breadcrumb">
+  <div class="container pillar-breadcrumb__inner">
+    <a href="../index.html" class="pillar-breadcrumb__link">Beranda</a>
+    <span class="pillar-breadcrumb__sep" aria-hidden="true">/</span>
+    <span aria-current="page">AI untuk Ekonomi Inklusif</span>
+  </div>
+</div>
+
+<div class="pillar-hero" role="img" aria-label="Ilustrasi artikel: pedagang pasar Indonesia">
+  <img src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=1600&q=80"
+       alt="Pedagang pasar tradisional Indonesia sedang melayani pembeli — simbol ekonomi informal"
+       class="pillar-hero__image"
+       loading="eager">
+  <div class="pillar-hero__overlay">
+    <p class="eyebrow pillar-hero__eyebrow">PILAR 02 · EKONOMI INKLUSIF</p>
+    <h1 class="pillar-hero__headline">Machine Learning dan Janji Inklusi Keuangan bagi 92 Juta Warga</h1>
+    <p class="pillar-hero__deck">Tanpa rekening bank dan riwayat kredit formal, separuh penduduk Indonesia selama ini terkunci dari layanan keuangan. AI mulai membuka kunci itu.</p>
+    <p class="pillar-hero__byline">Tim AI for SDGs Indonesia · 14 menit baca</p>
+  </div>
+</div>
+
+<main class="pillar-content" id="main-content">
+  <div class="article-layout">
+    <article class="article-layout__main">
+      <div class="article-body">
+
+        <p class="drop-cap">Statistik resmi OJK menyebutkan 76,19% penduduk Indonesia kini "terinklusi secara keuangan" — angka yang naik signifikan sejak 2014. Tapi inklusi tidak sama dengan akses. Dari 270 juta penduduk, sekitar 92 juta orang dewasa masih masuk kategori underbanked: punya rekening tapi tidak bisa mengakses kredit formal.</p>
+
+        <p>Penyebabnya klasik: bank butuh slip gaji, agunan, dan riwayat kredit. Tapi 60% angkatan kerja Indonesia bergerak di sektor informal — pedagang pasar, ojek online, petani, nelayan. Mereka punya pendapatan, sering kali stabil, tapi tidak punya "jejak digital" yang dimengerti sistem perbankan tradisional.</p>
+
+        <div class="data-callout" role="region" aria-label="Statistik kunci">
+          <div class="data-callout__grid">
+            <div class="data-callout__item">
+              <span class="data-callout__number" data-counter data-target="92">92</span>
+              <span class="data-callout__label" style="margin-top:0.25rem">Juta orang dewasa underbanked</span>
+              <span class="data-callout__source">OJK, 2024</span>
+            </div>
+            <div class="data-callout__item">
+              <span class="data-callout__number" data-counter data-target="60">60</span>
+              <span class="data-callout__label" style="margin-top:0.25rem">% angkatan kerja sektor informal</span>
+              <span class="data-callout__source">BPS, 2024</span>
+            </div>
+            <div class="data-callout__item">
+              <span class="data-callout__number" data-counter data-target="140">140</span>
+              <span class="data-callout__label" style="margin-top:0.25rem">Miliar USD potensi PDB tambahan</span>
+              <span class="data-callout__source">McKinsey, 2023</span>
+            </div>
+          </div>
+        </div>
+
+        <section class="article-section" aria-labelledby="alt-scoring-title">
+          <h2 id="alt-scoring-title">Alternative Credit Scoring: Revolusi Data</h2>
+          <p>Sejumlah fintech Indonesia — Kredivo, Akulaku, Investree, Modalku — mengembangkan model alternative credit scoring berbasis machine learning. Alih-alih slip gaji, model ini menganalisis ratusan sinyal lain: pola top-up pulsa, perilaku belanja online, durasi pemakaian aplikasi, hingga konsistensi lokasi GPS.</p>
+          <p>Pendekatan ini secara fundamental mengubah definisi "layak kredit". Seorang ibu rumah tangga yang konsisten membayar tagihan listrik tepat waktu selama tiga tahun bisa mendapat skor kredit lebih baik dari karyawan formal yang gajiannya tidak teratur.</p>
+        </section>
+
+        <blockquote class="pull-quote">
+          "Pedagang pasar dengan omzet Rp 5 juta per bulan bisa mendapat skor kredit lebih baik dari karyawan formal — karena AI melihat data yang bank konvensional abaikan."
+        </blockquote>
+
+        <section class="article-section" aria-labelledby="mandiri-title">
+          <h2 id="mandiri-title">Studi Kasus: Bank Mandiri ML Credit Scoring</h2>
+          <p>Bank Mandiri sejak 2022 mengoperasikan model credit scoring berbasis ML untuk pinjaman mikro. Model ini memproses 200+ variabel non-tradisional dan menurunkan rasio NPL (Non-Performing Loan) dari 4,2% menjadi 2,8% dalam 18 bulan.</p>
+          <p>Lebih penting: jumlah UMKM yang disetujui pinjaman naik 41%. Artinya, model tidak hanya lebih akurat dalam memprediksi risiko — tapi juga berhasil mengidentifikasi peminjam yang sebelumnya ditolak padahal sebenarnya layak.</p>
+        </section>
+
+        <section class="article-section" aria-labelledby="investree-title">
+          <h2 id="investree-title">Studi Kasus: Investree dan Ekspor UMKM</h2>
+          <p>Investree mengembangkan algoritma untuk menilai risiko invoice financing — pendanaan berbasis tagihan untuk eksportir UMKM. Dengan data shipment, riwayat buyer, dan tren komoditas, mereka berhasil menyalurkan lebih dari Rp 14 triliun ke 3.200+ UMKM eksportir.</p>
+          <p>Model ini bekerja pada level invoice individual — bukan profil perusahaan secara keseluruhan. Sehingga UMKM kecil dengan track record invoice yang baik bisa mendapat pembiayaan tanpa harus memiliki laporan keuangan formal yang disiapkan akuntan.</p>
+        </section>
+
+        <section class="article-section" aria-labelledby="challenge-eco-title">
+          <h2 id="challenge-eco-title">Bahaya yang Sering Luput Dibicarakan</h2>
+          <p>Tapi alternative credit scoring punya bahaya yang sering luput dibicarakan: surveillance creep. Untuk dapat kredit, warga harus rela "memberikan" data perilaku digital ke perusahaan swasta. Belum ada kerangka regulasi yang jelas tentang data apa yang boleh dipakai, dan apa yang harus tetap private.</p>
+          <p>OJK pada 2024 mulai menyusun "Code of Ethics for AI in Financial Services" — tapi implementasinya masih proses. Di tengah ketiadaan regulasi yang tegas, sejumlah fintech beroperasi di zona abu-abu yang bisa merugikan konsumen.</p>
+          <p>Ada pula risiko diskriminasi algoritmik: jika model dilatih dengan data historis yang mencerminkan bias sosial, maka keputusan kredit yang "otomatis" bisa memperpanjang ketidaksetaraan yang sudah ada — dengan tameng objektivitas palsu.</p>
+        </section>
+
+        <section class="article-section" aria-labelledby="impact-eco-title">
+          <h2 id="impact-eco-title">Potensi Dampak pada 2030</h2>
+          <p>Riset McKinsey memperkirakan inklusi keuangan penuh bisa menambah PDB Indonesia sebesar US$ 140 miliar pada 2030. AI bukan satu-satunya jawaban, tapi tanpa AI, mencapai inklusi penuh di geografis sebesar Indonesia hampir mustahil.</p>
+          <p>Yang dibutuhkan adalah tata kelola yang matang: regulasi yang melindungi data konsumen, mekanisme audit independen terhadap model kredit, dan standar transparansi yang memungkinkan peminjam memahami keputusan yang memengaruhi kehidupan mereka.</p>
+        </section>
+
+        <div class="related-sdgs" role="region" aria-labelledby="sdgs-eco-title">
+          <p class="related-sdgs__title" id="sdgs-eco-title">SDGs Terkait</p>
+          <div class="sdg-tags" role="list">
+            <span class="sdg-tag" role="listitem">SDG 8 — Pekerjaan Layak & Pertumbuhan Ekonomi</span>
+            <span class="sdg-tag" role="listitem">SDG 9 — Industri, Inovasi & Infrastruktur</span>
+            <span class="sdg-tag" role="listitem">SDG 10 — Berkurangnya Ketimpangan</span>
+          </div>
+        </div>
+
+        <div class="pillar-nav" role="navigation" aria-label="Navigasi antar pilar">
+          <a href="social-aid.html" class="pillar-nav__item" aria-label="Pilar sebelumnya: AI untuk Bantuan Sosial">
+            <span class="pillar-nav__direction">← Pilar sebelumnya</span>
+            <span class="pillar-nav__title">AI untuk Bantuan Sosial</span>
+          </a>
+          <a href="climate.html" class="pillar-nav__item pillar-nav__item--next" aria-label="Pilar berikutnya: AI untuk Climate Monitoring">
+            <span class="pillar-nav__direction">Pilar berikutnya →</span>
+            <span class="pillar-nav__title">AI untuk Climate Monitoring</span>
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+    <aside class="article-layout__sidebar" aria-label="Sidebar navigasi">
+      <div class="sidebar-section">
+        <p class="sidebar-section__title">Daftar Isi</p>
+        <nav class="sidebar-nav" aria-label="Daftar isi artikel">
+          <a href="#alt-scoring-title" class="sidebar-nav__link">Alternative Credit Scoring</a>
+          <a href="#mandiri-title" class="sidebar-nav__link">Studi Kasus: Bank Mandiri</a>
+          <a href="#investree-title" class="sidebar-nav__link">Studi Kasus: Investree</a>
+          <a href="#challenge-eco-title" class="sidebar-nav__link">Tantangan</a>
+          <a href="#impact-eco-title" class="sidebar-nav__link">Potensi Dampak</a>
+        </nav>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-section__title">Pilar Lainnya</p>
+        <nav class="sidebar-nav" aria-label="Navigasi pilar lainnya">
+          <a href="social-aid.html" class="sidebar-nav__link">01 · Bantuan Sosial</a>
+          <a href="climate.html" class="sidebar-nav__link">03 · Climate Monitoring</a>
+          <a href="education.html" class="sidebar-nav__link">04 · Pendidikan</a>
+          <a href="agriculture.html" class="sidebar-nav__link">05 · Smart Agriculture</a>
+        </nav>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">AI for SDGs Indonesia</span>
+      <p class="footer__tagline">Mendokumentasikan peran kecerdasan buatan dalam mempercepat pencapaian 17 SDGs di Indonesia.</p>
+    </div>
+    <div>
+      <p class="footer__section-title">Pilar</p>
+      <nav class="footer__links" aria-label="Navigasi pilar">
+        <a href="social-aid.html" class="footer__link">AI & Bantuan Sosial</a>
+        <a href="inclusive-economy.html" class="footer__link">AI & Ekonomi Inklusif</a>
+        <a href="climate.html" class="footer__link">AI & Iklim</a>
+        <a href="education.html" class="footer__link">AI & Pendidikan</a>
+        <a href="agriculture.html" class="footer__link">AI & Pertanian</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__section-title">Navigasi</p>
+      <nav class="footer__links" aria-label="Navigasi utama footer">
+        <a href="../dashboard.html" class="footer__link">Dashboard Data</a>
+        <a href="../news.html" class="footer__link">Berita & Wawasan</a>
+        <a href="../about.html" class="footer__link">Tentang Proyek</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copyright">© 2026 AI for SDGs Indonesia. Dirilis di bawah lisensi MIT.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/counter.js"></script>
+</body>
+</html>
